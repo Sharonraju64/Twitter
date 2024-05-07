@@ -26,7 +26,7 @@
     color: var(--twitter-color) !important;
 }
 
-@media screen {
+@media screen and (max-width: 688px) {
     .sidebar_tweet{
         display: none;
     }
