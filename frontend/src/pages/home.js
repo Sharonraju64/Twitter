@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth';
 import auth from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Sidebar from './sidebar';
-import Feed from './feed';
+import { Outlet } from 'react-router-dom';
 import Widgets from './widgets';
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <div className='app'>
             <Sidebar handleLogout={handleLogout} user={user}/>
-            <Feed />
+            <Outlet />
             <Widgets />
         </div>
     );
