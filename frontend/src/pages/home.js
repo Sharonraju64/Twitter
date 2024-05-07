@@ -1,9 +1,14 @@
 import React from 'react';
+import Sidebar from './sidebar';
+import Feed from './feed';
+import Widgets from './widgets';
 
 const Home = () => {
     return (
-        <div>
-            <h1>This is home page</h1>
+        <div className='app'>
+            <Sidebar />
+            <Feed />
+            <Widgets />
         </div>
     );
 };
