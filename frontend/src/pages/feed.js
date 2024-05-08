@@ -1,9 +1,13 @@
 import React from 'react';
 import '../styles/feed.css';
+import TweetBox from './tweetBox';
 const Feed = () => {
     return (
-        <div>
-            <h1>Feed</h1>
+        <div className='feed'>
+            <div className='feed__header'>
+                <h2>Home</h2>
+            </div>
+            <TweetBox />
         </div>
     );
 };
