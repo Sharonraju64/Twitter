@@ -9,7 +9,22 @@ const TweetBox = () => {
 
     const handleTweet = (e) =>{
         e.preventDefault();
-        console.log(post);
+        const userPost = {
+            post: post,
+            photo: imageURL
+        }
+        console.log(userPost);
+        fetch('http://localhost:5000/api/post/post', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userPost)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
     return (
