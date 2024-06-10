@@ -16,12 +16,15 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar, Button, Divider, IconButton, ListItemIcon } from '@mui/material';
 import CustomeLink from './customeLink';
+import useLoggedinUser from '../hooks/useloggedinuser';
 
 
 const Sidebar = ({handleLogout, user}) => {
 
     const [anchorE1, setAnchorE1] = useState(null);
     const openMenu = Boolean(anchorE1);
+    const [loggedInUser] = useLoggedinUser();
+    const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileimage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
 
     const handleClick = e =>{
         setAnchorE1(e.currentTarget);
@@ -63,7 +66,7 @@ const Sidebar = ({handleLogout, user}) => {
             </Button>
 
             <div className='Profile_info'>
-                <Avatar src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' />
+                <Avatar src={userProfilePic} />
                 <div className='user_info'>
                     <h4>Sharon Raju</h4>
                     <h5>@sharonraju64</h5>

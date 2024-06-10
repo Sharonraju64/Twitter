@@ -5,9 +5,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Sidebar from './sidebar';
 import { Outlet } from 'react-router-dom';
 import Widgets from './widgets';
+import useLoggedinUser from '../hooks/useloggedinuser';
 
 const Home = () => {
     const user = useAuthState(auth);
+    // console.log(user[0].email);
     
     const handleLogout = () =>{
         signOut(auth)

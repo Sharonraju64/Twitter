@@ -3,11 +3,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import '../styles/tweetBox.css';
+import useLoggedinUser from '../hooks/useloggedinuser';
 
 const TweetBox = () => {
     const [post, setPost] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [isLoading, setIsLoading] = useState('');
+    const [loggedInUser] = useLoggedinUser();
+    // console.log(loggedInUser);
+
+    const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileimage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
 
     const handleUplodeImage = (e) =>{
         setIsLoading(true);

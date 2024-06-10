@@ -4,7 +4,7 @@ const Post = require('../model/post');
 
 router.get('/getpost', async(req, res) =>{
     try {
-        const post = await Post.find().toArray();
+        const post = await Post.find()
         res.send(post);
     } catch (error) {
         return res.status(404).json({message: error});

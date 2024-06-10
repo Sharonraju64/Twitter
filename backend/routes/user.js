@@ -4,7 +4,17 @@ const User = require('../model/user');
 
 router.get('/getuser', async(req, res) =>{
     try {
-        const user = await User.find().toArray();
+        const user = await User.find();
+        res.send(user);
+    } catch (error) {
+        return res.status(404).json({message: error});
+    }
+});
+
+router.get('/loggedinuser', async(req, res) =>{
+    try {
+        const email = req.query.email;
+        const user = await User.find({email: email});
         res.send(user);
     } catch (error) {
         return res.status(404).json({message: error});
