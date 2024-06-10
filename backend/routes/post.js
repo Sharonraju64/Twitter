@@ -16,7 +16,11 @@ router.post('/post', async(req, res) =>{
     try {
         const newPost = new Post({
             post: post.post,
-            photo: post.photo
+            photo: post.photo,
+            profilePhoto: post.profilePhoto,
+            username: post.username,
+            name: post.name,
+            email: post.email
         });
         await newPost.save();
         //res.send('Post Added Successfully');

@@ -33,6 +33,7 @@ const Sidebar = ({handleLogout, user}) => {
         setAnchorE1(null);
     }
 
+    const result = user[0]?.email.split('@')[0];
     return (
         <div className='sidebar'>
             <TwitterIcon className='sidebar_twitterIcon' />
@@ -68,8 +69,12 @@ const Sidebar = ({handleLogout, user}) => {
             <div className='Profile_info'>
                 <Avatar src={userProfilePic} />
                 <div className='user_info'>
-                    <h4>Sharon Raju</h4>
-                    <h5>@sharonraju64</h5>
+                    <h4>
+                        {
+                            loggedInUser[0]?.name?loggedInUser[0]?.name: user && user[0]?.displayName
+                        }
+                    </h4>
+                    <h5>@{result}</h5>
                 </div>
                 <IconButton 
                     size='small'
@@ -86,15 +91,19 @@ const Sidebar = ({handleLogout, user}) => {
                         <Avatar src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' />
                         <div className='user_info subUser_info'>
                             <div>
-                                <h4>Sharon Raju</h4>
-                                <h5>@sharonraju64</h5>
+                                <h4>
+                                    {
+                                        loggedInUser[0]?.name?loggedInUser[0]?.name: user && user[0]?.displayName
+                                    }
+                                </h4>
+                                <h5>@{result}</h5>
                             </div>
                             <ListItemIcon className='done_icon'><DoneIcon /></ListItemIcon>
                         </div>
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
-                    <MenuItem onClick={handleLogout}>Log out @sharonraju64</MenuItem>
+                    <MenuItem onClick={handleLogout}>Log out @{result}</MenuItem>
                 </Menu>
             </div>
         </div>
