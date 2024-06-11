@@ -12,7 +12,7 @@ const Feed = () => {
         .then(data =>{
             setPosts(data);
         })        
-    },[])
+    },[posts])
 
     return (
         <div className='feed'>
