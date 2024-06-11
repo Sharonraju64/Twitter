@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {useNavigate} from 'react-router-dom';
+import CenterFocusWeakIcon from '@mui/icons-material/CenterFocusWeak';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+import AddLinkIcon from '@mui/icons-material/AddLink';
+import Post from '../pages/post';
 import '../styles/mainpage.css';
 import useLoggedinUser from '../hooks/useloggedinuser';
 
 const MainPage = ({user}) => {
     const navigate = useNavigate();
     const [loggedInUser] = useLoggedinUser();
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/post/getpost')
+        .then(res => res.json())
+        .then(data =>{
+            setPosts(data)
+        })
+    }, [posts])
     const username = user?.email?.split('@')[0];
     const handleUploadCoverImage = ()=>{
         console.log("object");
@@ -19,13 +32,52 @@ const MainPage = ({user}) => {
             <div className='mainProfile'>
                 <div className='profile-bio'>
                     {
-                        <div className='coverImageContainer'>
-                            <img src={loggedInUser[0]?.coverImage?loggedInUser[0]?.coverimage: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'} alt='' className='coverImage' />
-                            <div className='hoverCoverImage'>
-                                <div className='imageIcon_tweetButton'>
-                                    <h2>hello</h2>
-                                    <input type='file' id='image' className='imageInput' onChange={handleUploadCoverImage} />
+                        <div>
+                            <div className='coverImageContainer'>
+                                <img src={loggedInUser[0]?.coverImage?loggedInUser[0]?.coverimage: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'} alt='' className='coverImage' />
+                                <div className='hoverCoverImage'>
+                                    <label htmlFor='image' className='imageIcon'>
+                                        <CenterFocusWeakIcon className='photoIcon' />
+                                    </label>
+                                    <div className='imageIcon_tweetButton'>
+                                        <input type='file' id='image' className='imageInput' onChange={handleUploadCoverImage} />
+                                    </div>
                                 </div>
+                            </div>
+                            <div className='avatar-img'>
+                                <div className='avatarContainer'>
+                                <img src={loggedInUser[0]?.coverImage?loggedInUser[0]?.coverimage: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'} alt='' className='avatar' />
+                                </div>
+                                <div className='hoverAvaterImage'>
+                                    <div className='imageIcon_tweetButton'>
+                                    <label htmlFor='profileImage' className='imageIcon'>
+                                        <CenterFocusWeakIcon className='photoIcon' />
+                                    </label>
+                                    <div className='imageIcon_tweetButton'>
+                                        <input type='file' id='profileImage' className='imageInput' onChange={handleUploadCoverImage} />
+                                    </div>
+                                    </div>
+                                </div>
+                                <div className='userinfo'>
+                                    <div>
+                                        <h3 className='heading-3'>
+                                            {loggedInUser[0]?.name ? loggedInUser[0]?.name : user && user?.displayName}
+                                        </h3>
+                                        <p className='userNameSection'>@{username}</p>
+                                    </div>
+                                    <div className='infoContainer'>
+                                        {loggedInUser[0]?.bio ? loggedInUser[0]?.bio : ''}
+                                        <div className='locationAndLink'>
+                                            {loggedInUser[0]?.location ? <p className='sunInfo'><MyLocationIcon />{loggedInUser[0]?.location}</p> : ''}
+                                            {loggedInUser[0]?.website ? <p className='sunInfo'><AddLinkIcon />{loggedInUser[0]?.website}</p> : ''}
+                                        </div>
+                                    </div>
+                                    <h4 className='tweetsText'>Tweets</h4>
+                                    <hr />
+                                </div>
+                                {
+                                    posts.map(p=> <Post id={p._id} p={p} />)
+                                }
                             </div>
                         </div>
                     }

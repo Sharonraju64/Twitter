@@ -1,0 +1,63 @@
+.arrow-icon{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.arrow-icon:hover{
+    color: var(--twitter-color);
+}
+
+.coverImage{
+    height: 200px;
+    width: 600px;
+}
+
+.coverImageContainer{
+    position: relative;
+}
+.hoverCoverImage{
+    position: absolute;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.603);
+    width: 100%;
+    height: 98%;
+    opacity: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverCoverImage:hover{
+    opacity: 100%;
+}
+
+.photoIcon{
+    color: white;
+    font-size: 35px !important;
+    opacity: 40%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.photoIcon:hover{
+    opacity: 100%;
+}
+
+.photoIconDisabled{
+    cursor: not-allowed;
+}
+
+.userInfo{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.heading-4{
+    margin-top: -40px;
+    font-size: 19px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
