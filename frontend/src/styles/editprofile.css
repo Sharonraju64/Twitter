@@ -83,7 +83,7 @@
     margin-top: -80px;
     border-radius: 9999px;
     padding: 0px;
-    background-color: var(--twitter-background);
+    background-color: var(--main-bg-color);
     display: flex;
     align-content: center;
     justify-content: center;
@@ -99,9 +99,9 @@
     margin: 20px;
 }
 
-.fill-content>.text-feild{
+.fill-content .text-field{
     padding-bottom: 10px;
-    border: none;   
+    border: none; 
 }
 
 .birthdate-section{
@@ -115,7 +115,7 @@
 .birthdate-section p{
     font-weight: 600;
     padding-left: 5px;
-    margin-bottom: -8px;
+    margin-bottom: 8px;
 }
 
 .birthdate-section text{
@@ -127,7 +127,7 @@
 .text{
     display: flex;
     flex-direction: column;
-    margin-top: 30ox;
+    margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
     justify-content: center;
@@ -149,6 +149,7 @@
 .last-section>.last-btn{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     cursor: pointer;
     padding: 5px;
     margin-top: 20px;

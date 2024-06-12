@@ -128,8 +128,8 @@ const MainPage = ({user}) => {
                                 <div className='infoContainer'>
                                     {loggedInUser[0]?.bio ? loggedInUser[0]?.bio : ''}
                                     <div className='locationAndLink'>
-                                        {loggedInUser[0]?.location ? <p className='sunInfo'><MyLocationIcon />{loggedInUser[0]?.location}</p> : ''}
-                                        {loggedInUser[0]?.website ? <p className='sunInfo'><AddLinkIcon />{loggedInUser[0]?.website}</p> : ''}
+                                        {loggedInUser[0]?.location ? <p className='subInfo'><MyLocationIcon />{loggedInUser[0]?.location}</p> : ''}
+                                        {loggedInUser[0]?.website ? <p className='subInfo link'><AddLinkIcon />{loggedInUser[0]?.website}</p> : ''}
                                     </div>
                                 </div>
                                 <h4 className='tweetsText'>Tweets</h4>
