@@ -4,7 +4,7 @@ import '../styles/editprofile.css';
 const EditProfile = (props) => {
     return (
         <div>
-            <h1>This is edit profile</h1>
+            <button>EditProfile</button>
         </div>
     );
 };

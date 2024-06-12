@@ -36,4 +36,13 @@ router.post('/register', async(req, res) =>{
     }
 });
 
+router.patch('/userUpdates/:email', async(req, res) =>{
+    const filter = req.params;
+    const profile = req.body;
+    const options = { upsert: true};
+    const updateDoc = {$set: profile};
+    const result = await User.updateOne(filter, updateDoc, options)
+    res.send(result);
+});
+
 module.exports = router;

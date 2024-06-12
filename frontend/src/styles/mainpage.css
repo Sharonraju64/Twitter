@@ -65,15 +65,17 @@
 .heading-3{
     margin-left: 20px;
     font-size: 24px;
+    margin-bottom: 0px;
 }
 
 .userNameSection{
+    margin-top: 0px;
     margin-left: 20px;
     color: darkgray;
 }
 
 .mainProfile{
-    background-color: rgb(207, 206, 206);
+    /* background-color: rgb(207, 206, 206); */
     margin-top: 0;
     border: 1px solid white;
 }

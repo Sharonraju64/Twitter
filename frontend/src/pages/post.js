@@ -8,11 +8,11 @@ import PublishIcon from '@mui/icons-material/Publish';
 import '../styles/post.css';
 
 const post = ({p}) => {
-    const {name, username, photo, post, profilePhoto} = p;
+    const {name, username, photo, post, profileImage} = p;
     return (
         <div className='post'>
             <div className='post_avatar'>
-                <Avatar src={profilePhoto} />
+                <Avatar src={profileImage} />
             </div>
             <div className='post_body'>
                 <div className='post_header'>

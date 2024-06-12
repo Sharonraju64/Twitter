@@ -24,7 +24,7 @@ const Sidebar = ({handleLogout, user}) => {
     const [anchorE1, setAnchorE1] = useState(null);
     const openMenu = Boolean(anchorE1);
     const [loggedInUser] = useLoggedinUser();
-    const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileimage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+    const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileImage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
 
     const handleClick = e =>{
         setAnchorE1(e.currentTarget);
@@ -88,7 +88,7 @@ const Sidebar = ({handleLogout, user}) => {
                 </IconButton>
                 <Menu id='basic-menu' anchorEl={anchorE1} open={openMenu} onClick={handleClose} onClose={handleClose}>
                     <MenuItem className='Profile_info1'>
-                        <Avatar src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' />
+                        <Avatar src={userProfilePic} />
                         <div className='user_info subUser_info'>
                             <div>
                                 <h4>
