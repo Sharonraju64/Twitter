@@ -1,7 +1,8 @@
 import * as React from 'react';
 import '../styles/editprofile.css';
-import { Box, IconButton, Modal, TextField } from '@mui/material';
+import { Box, Button, IconButton, Modal, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import ChervonRightIcon from '@mui/icons-material/ChevronRight';
 
 const style={
     position: 'absolute',
@@ -37,8 +38,18 @@ function EditChild({dob, setDob}){
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
-                <Box>
-                    
+                <Box sx={{...style, width: 300, height: 300}}>
+                    <div className='text'>
+                        <h2>Edit date of birth?</h2>
+                        <p>This can only be changed a few times. <br />
+                            make sure you enter the age of the <br />
+                            person using account</p>
+                        <input 
+                            type='date'
+                            onChange={e => setDob(e.target.value)}
+                        />
+                        <Button className='e-button' onClick={()=>{setOpen(false)}}>Cancle</Button>
+                    </div>
                 </Box>
             </Modal>
         </React.Fragment>
@@ -88,7 +99,21 @@ export default function EditProfile({user, loggedInUser}) {
                         <p>.</p>
                         <EditChild dob={dob} setDob={setDob} />
                     </div>
-                    <div className='last-section'></div>
+                    <div className='last-section'>
+                        {
+                            loggedInUser[0]?.dob?
+                            <h2>{loggedInUser[0]?.dob}</h2> :
+                            <h2>
+                                {
+                                    dob?dob:'Add your date of birth'
+                                }
+                            </h2>
+                        }
+                        <div className='last-btn'>
+                            <h2>Switch to professional</h2>
+                            <ChervonRightIcon />
+                        </div>
+                    </div>
                 </Box>
             </Modal>
         </div>
