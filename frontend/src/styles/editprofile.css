@@ -1,0 +1,11 @@
+.Edit-profile-btn{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 2rem;
+    margin-right: 20px;
+}
+
+.Edit-profile-btn:hover{
+    background-color: rgb(207, 206, 206);
+}

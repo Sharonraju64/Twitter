@@ -123,7 +123,7 @@ const MainPage = ({user}) => {
                                         </h3>
                                         <p className='userNameSection'>@{username}</p>
                                     </div>
-                                    <EditProfile />
+                                    <EditProfile user={user} loggedInUser={loggedInUser} />
                                 </div>
                                 <div className='infoContainer'>
                                     {loggedInUser[0]?.bio ? loggedInUser[0]?.bio : ''}
