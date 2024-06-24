@@ -2,10 +2,9 @@ import { Avatar, Button } from '@mui/material';
 import React, { useState } from 'react';
 import axios from 'axios';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import '../styles/tweetBox.css';
-import useLoggedinUser from '../hooks/useloggedinuser';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../firebase';
+import './tweetBox.css';
+import useLoggedinUser from '../../hooks/useloggedinuser';
+import { useUserAuth } from '../../Firebase/UserAuthContext';
 
 const TweetBox = () => {
     const [post, setPost] = useState('');
@@ -14,8 +13,7 @@ const TweetBox = () => {
     const [name, setName] = useState('');
     const [username, setUserName] = useState('');
     const [loggedInUser] = useLoggedinUser();
-    // console.log(loggedInUser);
-    const [user] = useAuthState(auth);
+    const { user } = useUserAuth();
     const email = user?.email;
 
     const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileImage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
@@ -35,7 +33,6 @@ const TweetBox = () => {
         })
         .catch((error) => {
             console.log(error);
-            setIsLoading(false);
         })
     }
 

@@ -1,46 +1,38 @@
 import React, { useState } from 'react';
-import twitterImage from '../assets/twitter.jpeg';
+import twitterImage from '../../assets/twitter.jpeg';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import {useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
-import auth from "../firebase";
+import { useUserAuth } from '../../Firebase/UserAuthContext';
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from 'react-google-button';
-import '../styles/login.css';
+import './login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const { logIn, googleSignIn } = useUserAuth();
     const navigate = useNavigate();
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-      
-    if (user || googleUser) {
-        navigate('/');
-        console.log(user);
-        console.log(googleUser);
-    }
-
-    if (error) {
-        console.log(error.message);
-    }
-
-    if (loading) {
-        console.log('loading...');
-    }
-
-    const handleSubmit = e =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(email, password);
-        signInWithEmailAndPassword(email, password);
-    }
-    const handleGoogleSignin = () =>{
-        signInWithGoogle();
+        setError("");
+        try {
+            await logIn(email, password);
+            navigate("/")
+        } catch (err) {
+            setError(err.message);
+            window.alert(err.message);
+        }
+    };
+
+    const handleGoogleSignin = async (e) =>{
+        e.preventDefault();
+        try {
+            await googleSignIn();
+            navigate('/')
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     return (

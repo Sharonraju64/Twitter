@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/feed.css';
-import TweetBox from './tweetBox';
-import axios from 'axios';
-import Post from '../pages/post';
+import './feed.css';
+import TweetBox from './TweetBox';
+import Post from './Post';
 const Feed = () => {
     const [posts, setPosts] = useState([]);
 

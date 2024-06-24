@@ -1,28 +1,33 @@
+import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from './pages/home';
-import Login from './pages/login';
-import Signup from './pages/signup';
-import ProtectedRoute from './pages/protectedRoute';
-import PageLoading from './pages/pageLoading';
-import Feed from './pages/feed';
-import Explore from './pages/explore';
-import Notifications from './pages/notifications';
-import Messages from './pages/messages';
-import Bookmarks from './pages/bookmarks';
-import Lists from './pages/lists';
-import Profile from './pages/profile';
-import More from './pages/more';
+import { Route, Routes } from "react-router-dom";
+import Home from './pages/Home';
+import Login from './pages/Login/Login';
+import Signup from './pages/Login/Signup';
+import ProtectedRoute from './pages/ProtectedRoute';
+import { UserAuthContextProvider } from "./Firebase/UserAuthContext";
+import Feed from './pages/Feed/Feed';
+import Explore from './pages/Explore/Explore';
+import Notifications from './pages/Notification/Notifications';
+import Messages from './pages/Messages/Messages';
+import Bookmarks from './pages/Bookmarks/Bookmarks';
+import Lists from './pages/Lists/Lists';
+import Profile from './pages/Profile/Profile';
+import More from './pages/More/More';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <UserAuthContextProvider>
         <Routes>
           <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}>
             <Route index element={<Feed />} />
           </Route>
-          <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}>
+          <Route path='/home' element={
+            <ProtectedRoute>
+              <Home/>
+            </ProtectedRoute>
+          }>
             <Route path='feed' element={<Feed />} />
             <Route path='explore' element={<Explore />} />
             <Route path='notifications' element={<Notifications />} />
@@ -34,9 +39,8 @@ function App() {
           </Route>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
-          <Route path='/page-loading' element={<PageLoading/>}/>
         </Routes>
-      </BrowserRouter>
+      </UserAuthContextProvider>
     </div>
   );
 }

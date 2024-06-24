@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../styles/editprofile.css';
+import './editprofile.css';
 import { Box, Button, IconButton, Modal, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ChervonRightIcon from '@mui/icons-material/ChevronRight';

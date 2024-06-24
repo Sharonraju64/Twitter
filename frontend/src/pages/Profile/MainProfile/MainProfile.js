@@ -5,11 +5,11 @@ import CenterFocusWeakIcon from '@mui/icons-material/CenterFocusWeak';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import AddLinkIcon from '@mui/icons-material/AddLink';
-import Post from '../pages/post';
+import Post from '../../Feed/Post';
 import axios from 'axios';
-import EditProfile from './editprofile';
-import '../styles/mainpage.css';
-import useLoggedinUser from '../hooks/useloggedinuser';
+import EditProfile from '../EditProfile/EditProfile';
+import './mainprofile.css';
+import useLoggedinUser from '../../../hooks/useloggedinuser';
 
 const MainPage = ({user}) => {
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const MainPage = ({user}) => {
         .then(data =>{
             setPosts(data)
         })
-    }, [posts])
+    }, [user?.email])
     const username = user?.email?.split('@')[0];
 
     const handleUploadCoverImage = (e) =>{

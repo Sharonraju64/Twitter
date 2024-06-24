@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/sidebar.css';
+import './sidebar.css';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import SidebarOptions from './sidebarOptions';
+import SidebarOptions from './SidebarOptions';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -10,13 +10,14 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import MoreIcon from '@mui/icons-material/More'
+import MoreIcon from '@mui/icons-material/More';
 import DoneIcon from '@mui/icons-material/Done';
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar, Button, Divider, IconButton, ListItemIcon } from '@mui/material';
-import CustomeLink from './customeLink';
-import useLoggedinUser from '../hooks/useloggedinuser';
+import CustomeLink from './CustomeLink';
+import useLoggedinUser from '../../hooks/useloggedinuser';
+import { useNavigate } from 'react-router-dom';
 
 
 const Sidebar = ({handleLogout, user}) => {
@@ -24,6 +25,7 @@ const Sidebar = ({handleLogout, user}) => {
     const [anchorE1, setAnchorE1] = useState(null);
     const openMenu = Boolean(anchorE1);
     const [loggedInUser] = useLoggedinUser();
+    const navigate = useNavigate();
     const userProfilePic = loggedInUser[0]?.profileImage?loggedInUser[0]?.profileImage: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
 
     const handleClick = e =>{
@@ -33,7 +35,7 @@ const Sidebar = ({handleLogout, user}) => {
         setAnchorE1(null);
     }
 
-    const result = user[0]?.email.split('@')[0];
+    const result = user?.email?.split('@')[0];
     return (
         <div className='sidebar'>
             <TwitterIcon className='sidebar_twitterIcon' />
@@ -71,7 +73,7 @@ const Sidebar = ({handleLogout, user}) => {
                 <div className='user_info'>
                     <h4>
                         {
-                            loggedInUser[0]?.name?loggedInUser[0]?.name: user && user[0]?.displayName
+                            loggedInUser[0]?.name?loggedInUser[0]?.name: user && user?.displayName
                         }
                     </h4>
                     <h5>@{result}</h5>
@@ -87,13 +89,13 @@ const Sidebar = ({handleLogout, user}) => {
                     <MoreHorizIcon />
                 </IconButton>
                 <Menu id='basic-menu' anchorEl={anchorE1} open={openMenu} onClick={handleClose} onClose={handleClose}>
-                    <MenuItem className='Profile_info1'>
+                    <MenuItem className='Profile_info1' onClick={()=> navigate('/home/profile')}>
                         <Avatar src={userProfilePic} />
                         <div className='user_info subUser_info'>
                             <div>
                                 <h4>
                                     {
-                                        loggedInUser[0]?.name?loggedInUser[0]?.name: user && user[0]?.displayName
+                                        loggedInUser[0]?.name?loggedInUser[0]?.name: user && user.displayName
                                     }
                                 </h4>
                                 <h5>@{result}</h5>

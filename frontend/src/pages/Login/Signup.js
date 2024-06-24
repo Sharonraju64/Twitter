@@ -1,59 +1,50 @@
 import React, { useState } from 'react';
-import twitterImage from '../assets/twitter.jpeg';
+import twitterImage from '../../assets/twitter.jpeg';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import {useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
-import auth from "../firebase";
+import { useUserAuth } from '../../Firebase/UserAuthContext';
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from 'react-google-button';
 import axios from 'axios';
-import '../styles/login.css';
+import './login.css';
 
 const Signup = () => {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
     const [password, setPassword] = useState('');
+    const { signUp, googleSignIn } = useUserAuth();
     const navigate = useNavigate();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     
-    if (user || googleUser) {
-        navigate('/')
-        console.log(user);
-        console.log(googleUser);
-    }
-
-    if (error) {
-        console.log(error.message);
-
-    }
-
-    if (loading) {
-        console.log('loading...');
-    }
-
-    const handleSubmit = e =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(email, password);
-        createUserWithEmailAndPassword(email, password);
+        setError("");
+        try {
+            await signUp(email, password);
+            const user = {
+                username : username,
+                name : name,
+                email : email,
+            }
 
-        const user = {
-            username : username,
-            name : name,
-            email : email,
+            axios.post('http://localhost:5000/api/user/register', user);
+            navigate('/');
+        } catch (error) {
+            setError(error.message);
+            window.alert(error.message);
         }
+    };
 
-        axios.post('http://localhost:5000/api/user/register', user);
-    }
-    const handleGoogleSignin = () =>{
-        signInWithGoogle();
-    }
+    const handleGoogleSignin = async (e) =>{
+        e.preventDefault();
+        try {
+            await googleSignIn();
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+            console.log(error);
+        }
+    };
 
     return (
         <div className='login-container'>
@@ -65,6 +56,7 @@ const Signup = () => {
                     <TwitterIcon className='twittericon' style={{color: 'skyblue'}} />
                     <h2 className='heading'>Happing now</h2>
                     <h3 className='heading1'>Join twitter today</h3>
+                    {error && <p className='errorMessage'>{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <input
                         type='text'
@@ -109,7 +101,7 @@ const Signup = () => {
                             to='/login'
                             style={{
                                 textDecoration:'none',
-                                color:'skyblue',
+                                color:'var(--twitter-color)',
                                 fontWeight:'600',
                                 marginLeft:'5px'
                             }}

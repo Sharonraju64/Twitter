@@ -1,18 +1,20 @@
 import React from 'react';
-import { signOut } from 'firebase/auth';
-import auth from '../firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import Sidebar from './sidebar';
+import { useUserAuth } from "../Firebase/UserAuthContext";
+import { useNavigate } from "react-router";
+import Sidebar from './Sidebar/Sidebar';
 import { Outlet } from 'react-router-dom';
-import Widgets from './widgets';
-import useLoggedinUser from '../hooks/useloggedinuser';
+import Widgets from './Widgets/Widgets';
 
 const Home = () => {
-    const user = useAuthState(auth);
-    // console.log(user[0].email);
-    
-    const handleLogout = () =>{
-        signOut(auth)
+    const { logOut, user } = useUserAuth();
+    const navigate = useNavigate();
+    const handleLogout = async () =>{
+        try {
+            await logOut();
+            navigate('/login');
+        } catch (error) {
+            console.log(error.message);            
+        }
     }
     return (
         <div className='app'>
