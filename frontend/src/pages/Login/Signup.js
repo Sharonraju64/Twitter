@@ -27,7 +27,7 @@ const Signup = () => {
                 email : email,
             }
 
-            axios.post('http://localhost:5000/api/user/register', user);
+            axios.post('https://twitter-rfzi.onrender.com/api/user/register', user);
             navigate('/');
         } catch (error) {
             setError(error.message);

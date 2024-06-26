@@ -39,7 +39,7 @@ const TweetBox = () => {
     const handleTweet = (e) =>{
         e.preventDefault();
         if(user.providerData[0].providerId === 'password'){
-            fetch(`http://localhost:5000/api/user/loggedinuser?email=${email}`)
+            fetch(`https://twitter-rfzi.onrender.com/api/user/loggedinuser?email=${email}`)
             .then(res => res.json())
             .then(data =>{
                 setName(data[0]?.name)
@@ -62,7 +62,7 @@ const TweetBox = () => {
             console.log(userPost);
             setPost('');
             setImageURL('');
-            fetch('http://localhost:5000/api/post/post', {
+            fetch('https://twitter-rfzi.onrender.com/api/post/post', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

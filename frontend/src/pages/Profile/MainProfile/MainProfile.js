@@ -18,7 +18,7 @@ const MainPage = ({user}) => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/post/userpost?email=${user?.email}`)
+        fetch(`https://twitter-rfzi.onrender.com/api/post/userpost?email=${user?.email}`)
         .then(res => res.json())
         .then(data =>{
             setPosts(data)
@@ -42,7 +42,7 @@ const MainPage = ({user}) => {
             setIsLoading(false);
             if (url) {
                 try {
-                    axios.patch(`http://localhost:5000/api/user/userUpdates/${user?.email}`, userCoverImage);
+                    axios.patch(`https://twitter-rfzi.onrender.com/api/user/userUpdates/${user?.email}`, userCoverImage);
                 } catch (error) {
                     return res.status(404).json({message: error});
                 }
@@ -65,7 +65,7 @@ const MainPage = ({user}) => {
             setIsLoading(false);
             if (url) {
                 try {
-                    axios.patch(`http://localhost:5000/api/user/userUpdates/${user?.email}`, userProfileImage);
+                    axios.patch(`https://twitter-rfzi.onrender.com/api/user/userUpdates/${user?.email}`, userProfileImage);
                 } catch (error) {
                     return res.status(404).json({message: error});
                 }

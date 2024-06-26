@@ -74,7 +74,7 @@ export default function EditProfile({user, loggedInUser}) {
             dob,
         }
         if (editedInfo) {
-            await axios.patch(`http://localhost:5000/api/user/userUpdates/${user?.email}`, editedInfo);
+            await axios.patch(`https://twitter-rfzi.onrender.com/api/user/userUpdates/${user?.email}`, editedInfo);
             setOpen(false);          
         }
     }
