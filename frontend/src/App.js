@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 // import Home from './pages/home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Login/Signup';
-import ProtectedRoute from './pages/ProtectedRoute';
+import ProtectedRoute from './pages/protectedRoute';
 import { UserAuthContextProvider } from "./Firebase/UserAuthContext";
 import Feed from './pages/Feed/Feed';
 import Explore from './pages/Explore/Explore';
