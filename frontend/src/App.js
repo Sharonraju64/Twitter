@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <UserAuthContextProvider>
         <Routes>
-          <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}>
+          <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>}>
             <Route index element={<Feed />} />
           </Route>
           <Route path='/home' element={
