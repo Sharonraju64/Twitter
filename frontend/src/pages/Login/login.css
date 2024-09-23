@@ -60,7 +60,8 @@ input {
 }
 
 .email,
-.password {
+.password,
+.otp {
     background-color: #E8F0FE;
     width: 70%;
     border-radius: 8px;
@@ -78,10 +79,8 @@ input {
     outline: none;
 }
 
-
-
-
-.btn-login {
+.btn-login,
+.otp-submit {
     padding: 7px;
 }
 

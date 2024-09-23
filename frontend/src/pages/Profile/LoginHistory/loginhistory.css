@@ -1,0 +1,41 @@
+.login-history-btn{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 2rem;
+    margin-left: 220px;
+}
+
+.login-history-btn:hover{
+    background-color: rgb(207, 206,206);
+}
+
+.modal{
+    background-color: white;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.modal::-webkit-scrollbar{
+    display: none;
+}
+
+.head{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    z-index: 1;
+    background-color: white;
+    top: 5px;
+    position: sticky;
+    margin-bottom: 30px;
+}
+
+.head>.head-title{
+    font-size: 30px; 
+    font-weight: 500; 
+    margin-right: 365px;
+}
+

@@ -10,6 +10,7 @@ import axios from 'axios';
 import EditProfile from '../EditProfile/EditProfile';
 import './mainprofile.css';
 import useLoggedinUser from '../../../hooks/useloggedinuser';
+import LoginHistory from '../LoginHistory/LoginHistory';
 
 const MainPage = ({user}) => {
     const navigate = useNavigate();
@@ -123,6 +124,7 @@ const MainPage = ({user}) => {
                                         </h3>
                                         <p className='userNameSection'>@{username}</p>
                                     </div>
+                                    <LoginHistory user={user} />
                                     <EditProfile user={user} loggedInUser={loggedInUser} />
                                 </div>
                                 <div className='infoContainer'>
