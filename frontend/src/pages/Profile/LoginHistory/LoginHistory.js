@@ -14,15 +14,14 @@ export default function LoginHistory ({user}){
         const fetchHistory = async () =>{
             await axios.get(`http://localhost:5000/api/login/userlogin?email=${user?.email}`)
             .then(response => {
-                setHistory(response.data);
-                console.log(history);                
+                setHistory(response.data);              
             })
             .catch(err =>{
                 console.log(err.response ? err.response.data : 'Error occurred');
             });
         };
         fetchHistory();
-    }, [user?.email]);
+    }, [history, user?.email]);
 
     const handlePageChange = (event, newPage) =>{
         setPage(newPage);

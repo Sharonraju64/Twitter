@@ -1,0 +1,48 @@
+.locaktion-track-btn{
+    background-color: white;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 2rem;
+    margin-right: -100px;
+}
+
+.locaktion-track-btn:hover{
+    background-color: rgb(207, 206,206);
+}
+
+.modal{
+    background-color: white;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.modal::-webkit-scrollbar{
+    display: none;
+}
+
+.head{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    z-index: 1;
+    background-color: white;
+    top: 5px;
+    position: sticky;
+    margin-bottom: 0px;
+}
+
+.head>.head-title{
+    font-size: 30px; 
+    font-weight: 500; 
+    margin-right: 365px;
+}
+
+.note{
+    margin: 0;
+    padding: 0;
+    color: red;
+    /* background-color: rgb(207, 206,206); */
+    text-align: center;
+}

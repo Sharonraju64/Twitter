@@ -12,6 +12,7 @@ import './mainprofile.css';
 import useLoggedinUser from '../../../hooks/useloggedinuser';
 import LoginHistory from '../LoginHistory/LoginHistory';
 import ChangePassword from '../ChangePassword/ChangePassword';
+import LocationTracker from '../Location/LocationTracker';
 
 const MainPage = ({user}) => {
     const navigate = useNavigate();
@@ -132,7 +133,8 @@ const MainPage = ({user}) => {
                                 <div className='infoContainer'>
                                     {loggedInUser[0]?.bio ? loggedInUser[0]?.bio : ''}
                                     <div className='locationAndLink'>
-                                        {loggedInUser[0]?.location ? <p className='subInfo'><MyLocationIcon />{loggedInUser[0]?.location}</p> : ''}
+                                        {/* {loggedInUser[0]?.location ? <p className='subInfo'><MyLocationIcon />{loggedInUser[0]?.location}</p> : ''} */}
+                                        <MyLocationIcon /><LocationTracker />
                                         {loggedInUser[0]?.website ? <p className='subInfo link'><AddLinkIcon />{loggedInUser[0]?.website}</p> : ''}
                                     </div>
                                 </div>
