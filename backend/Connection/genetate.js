@@ -13,4 +13,14 @@ const transporter = nodemailer.createTransport({
         pass: process.env.GMAIL_PASS
     }
 });
-module.exports = {generateOTP, transporter};
+
+const generatePassword = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let password = '';
+    for (let i = 0; i < 10; i++){
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return password;
+};
+
+module.exports = {generateOTP, generatePassword, transporter};

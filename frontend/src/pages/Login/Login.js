@@ -57,7 +57,7 @@ const Login = () => {
         }
     }, [email, ipAddress, browser, os, device, mobile, navigate]);
 
-    const getData = async(e) =>{
+    const getData = async() =>{
         const ipres = await axios.get('https://api.ipify.org');
         setIpAddress(ipres.data);
         const browserres = await axios.get(`https://api.apicagent.com/?ua=${window.navigator.userAgent}`);   
@@ -137,7 +137,22 @@ const Login = () => {
                             <div className='btn-login'>
                                 <button type='submit' className='btn'>Login</button>
                             </div>
-                        </form>                 
+                        </form>
+                        <div className='forgetpassword'>
+                            <Link
+                                to='/forgetpassword'
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'skyblue',
+                                    fontSize: '18px',
+                                    fontWeight: '600',
+                                    marginTop: '0px',
+                                    marginLeft: '235px'
+                                }}
+                            >
+                                ForgetPassword?
+                            </Link> 
+                        </div>               
                     </div>
                     <hr/>
                     <div className='google-button'>

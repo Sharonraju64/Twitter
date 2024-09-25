@@ -126,6 +126,10 @@ input {
     color: var(--twitter-color) !important;
 }
 
+.forgetpassword{
+    margin-top: -20px;
+}
+
 @media screen and (max-width:688px) {
     .login-container {
         order: 2;

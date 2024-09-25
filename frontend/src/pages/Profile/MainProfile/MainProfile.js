@@ -11,6 +11,7 @@ import EditProfile from '../EditProfile/EditProfile';
 import './mainprofile.css';
 import useLoggedinUser from '../../../hooks/useloggedinuser';
 import LoginHistory from '../LoginHistory/LoginHistory';
+import ChangePassword from '../ChangePassword/ChangePassword';
 
 const MainPage = ({user}) => {
     const navigate = useNavigate();
@@ -124,6 +125,7 @@ const MainPage = ({user}) => {
                                         </h3>
                                         <p className='userNameSection'>@{username}</p>
                                     </div>
+                                    <ChangePassword user={user} />
                                     <LoginHistory user={user} />
                                     <EditProfile user={user} loggedInUser={loggedInUser} />
                                 </div>

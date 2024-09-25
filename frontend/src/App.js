@@ -14,6 +14,8 @@ import Bookmarks from './pages/Bookmarks/Bookmarks';
 import Lists from './pages/Lists/Lists';
 import Profile from './pages/Profile/Profile';
 import More from './pages/More/More';
+import ForgetPassword from './pages/Login/ForgetPassword';
+import ChangePassword from './pages/Profile/ChangePassword/ChangePassword';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
           </Route>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/forgetpassword' element={<ForgetPassword/>}/>
+          <Route path='/changepassword' element={<ChangePassword />} />
         </Routes>
       </UserAuthContextProvider>
     </div>

@@ -7,6 +7,7 @@ const port = 5000;
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 const loginRouter = require('./routes/loginHistory');
+const forgetPasswordRouter = require('./routes/forgetpassword');
 
 app.use(cors());
 dotenv.config();
@@ -16,11 +17,12 @@ dbConnect();
 app.use('/api/post', postRouter);
 app.use('/api/user', userRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/forgetpassword', forgetPasswordRouter);
 
 app.get('/', (req, res) =>{
     res.send('Hello from Twitter!');
 });
 
 app.listen(port, () =>{
-    console.log(`Twitter listening on port ${port}`);
+    console.log(`Twitter listening on port ${port}`);    
 });
