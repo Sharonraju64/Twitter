@@ -1,0 +1,11 @@
+.tweet-container{
+    margin: -20px;
+    border-radius: 20px;
+    background-color: #50b7f5;
+    color: white;
+}
+
+.tweet{
+    margin: 10px;
+    font-size: 15px;
+}

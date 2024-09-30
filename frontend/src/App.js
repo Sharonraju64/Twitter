@@ -16,8 +16,9 @@ import Profile from './pages/Profile/Profile';
 import More from './pages/More/More';
 import ForgetPassword from './pages/Login/ForgetPassword';
 import ChangePassword from './pages/Profile/ChangePassword/ChangePassword';
+import TwitterChatbot from './pages/Chatbot/TwitterChatbot';
 
-function App() {
+function App() { 
   return (
     <div className="App">
       <UserAuthContextProvider>
@@ -43,7 +44,8 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/forgetpassword' element={<ForgetPassword/>}/>
           <Route path='/changepassword' element={<ChangePassword />} />
-        </Routes>
+        </Routes>        
+        <TwitterChatbot />
       </UserAuthContextProvider>
     </div>
   );

@@ -8,6 +8,7 @@ const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 const loginRouter = require('./routes/loginHistory');
 const forgetPasswordRouter = require('./routes/forgetpassword');
+const chatbotRouter = require('./routes/chatbot');
 
 app.use(cors());
 dotenv.config();
@@ -18,6 +19,7 @@ app.use('/api/post', postRouter);
 app.use('/api/user', userRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/forgetpassword', forgetPasswordRouter);
+app.use('/api/chatbot', chatbotRouter);
 
 app.get('/', (req, res) =>{
     res.send('Hello from Twitter!');
