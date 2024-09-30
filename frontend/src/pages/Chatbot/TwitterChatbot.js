@@ -19,7 +19,7 @@ const Chatbot =({steps, triggerNextStep}) => {
     useEffect(()=>{
         const input = steps.search.value;
         const getTweets = async() =>{
-            const responce = await axios.get(`http://localhost:5000/gettweets?q=${input}`);
+            const responce = await axios.get(`http://localhost:5000/api/chatbot/gettweets?q=${input}`);
             if(responce && responce.length > 0){
                 setLoading(false);
                 setTweets(responce.data);
